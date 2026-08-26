@@ -1,0 +1,133 @@
+// ============================================================
+// Prisma schema - Checkout de producto con pasarela de pagos
+// Supabase (PostgreSQL) + NestJS
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  // Pooler de Supabase (puerto 6543) para el runtime de la app
+  url       = env("DATABASE_URL")
+  // Conexión directa (puerto 5432) que Prisma usa para migrar
+  directUrl = env("DIRECT_URL")
+}
+
+// ------------------------------------------------------------
+// Enums
+// ------------------------------------------------------------
+enum TransactionStatus {
+  PENDING
+  APPROVED
+  DECLINED
+
+  @@map("transaction_status")
+}
+
+enum DeliveryStatus {
+  PENDING
+  ASSIGNED
+
+  @@map("delivery_status")
+}
+
+enum DocumentType {
+  CC
+  CE
+  NIT
+  PP
+
+  @@map("document_type")
+}
+
+// ------------------------------------------------------------
+// Modelos
+// ------------------------------------------------------------
+model Product {
+  id           String   @id @default(uuid()) @db.Uuid
+  name         String   @unique @db.VarChar(120)
+  description  String
+  priceInCents Int      @map("price_in_cents")
+  imageUrl     String   @map("image_url")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  stock        Stock?
+  transactions Transaction[]
+
+  @@map("products")
+}
+
+model Stock {
+  id        String   @id @default(uuid()) @db.Uuid
+  productId String   @unique @map("product_id") @db.Uuid
+  quantity  Int      @default(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("stocks")
+}
+
+model Customer {
+  id             String       @id @default(uuid()) @db.Uuid
+  email          String       @unique @db.VarChar(180)
+  fullName       String       @map("full_name") @db.VarChar(160)
+  phoneNumber    String       @map("phone_number") @db.VarChar(30)
+  documentType   DocumentType @map("document_type")
+  documentNumber String       @map("document_number") @db.VarChar(30)
+  createdAt      DateTime     @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt      DateTime     @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  transactions Transaction[]
+
+  @@unique([documentType, documentNumber], name: "customers_document_unique")
+  @@map("customers")
+}
+
+model Transaction {
+  id         String @id @default(uuid()) @db.Uuid
+  reference  String @unique @db.VarChar(60)
+  customerId String @map("customer_id") @db.Uuid
+  productId  String @map("product_id") @db.Uuid
+  quantity   Int    @default(1)
+
+  productAmount Int @map("product_amount")
+  baseFee       Int @map("base_fee")
+  deliveryFee   Int @map("delivery_fee")
+  totalAmount   Int @map("total_amount")
+
+  status                TransactionStatus @default(PENDING)
+  providerTransactionId String?           @map("provider_transaction_id") @db.VarChar(80)
+  cardBrand             String?           @map("card_brand") @db.VarChar(20)
+  cardLastFour          String?           @map("card_last_four") @db.Char(4)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  customer Customer  @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  product  Product   @relation(fields: [productId], references: [id], onDelete: Restrict)
+  delivery Delivery?
+
+  @@index([customerId])
+  @@index([productId])
+  @@index([status])
+  @@map("transactions")
+}
+
+model Delivery {
+  id            String         @id @default(uuid()) @db.Uuid
+  transactionId String         @unique @map("transaction_id") @db.Uuid
+  addressLine   String         @map("address_line") @db.VarChar(255)
+  city          String         @db.VarChar(80)
+  region        String         @db.VarChar(80)
+  status        DeliveryStatus @default(PENDING)
+  createdAt     DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime       @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  transaction Transaction @relation(fields: [transactionId], references: [id], onDelete: Cascade)
+
+  @@map("deliveries")
+}
