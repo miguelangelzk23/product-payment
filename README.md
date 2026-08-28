@@ -76,6 +76,32 @@ Ambos proyectos cuentan con suites de pruebas unitarias robustas que superan amp
 
 ---
 
+## 📸 Capturas de Pantalla (Diseño Responsive)
+
+A continuación se muestra el flujo de la aplicación de checkout, evidenciando su adaptabilidad responsive desde pantallas móviles hasta pantallas de escritorio.
+
+### 1. Catálogo / Inicio y Datos de Envío
+| Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
+|:---:|:---:|
+| <img src="./docs/img/img_pantallas/InicioD.png" width="450" alt="Inicio Desktop" /> | <img src="./docs/img/img_pantallas/DatosEnvioM.png" width="200" alt="Envío Mobile" /> |
+
+### 2. Ficha de Detalle de Producto
+| Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
+|:---:|:---:|
+| <img src="./docs/img/img_pantallas/productoD.png" width="450" alt="Producto Desktop" /> | <img src="./docs/img/img_pantallas/datosTarjetaM.png" width="200" alt="Tarjeta Mobile" /> |
+
+### 3. Formulario de Tarjeta y Procesando Pago
+| Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
+|:---:|:---:|
+| <img src="./docs/img/img_pantallas/DatosTarjetaD.png" width="450" alt="Tarjeta Desktop" /> | <img src="./docs/img/img_pantallas/procesandoM.png" width="200" alt="Procesando Mobile" /> |
+
+### 4. Transacción Exitosa / Confirmación
+| Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
+|:---:|:---:|
+| <img src="./docs/img/img_pantallas/TransaccionAprobadaD.png" width="450" alt="Aprobado Desktop" /> | <img src="./docs/img/img_pantallas/TransaccionAprobadaM.png" width="200" alt="Aprobado Mobile" /> |
+
+---
+
 ## 💻 Ejecución Local del Proyecto
 
 ### Requisitos Previos
