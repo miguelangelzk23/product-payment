@@ -90,15 +90,15 @@ A continuación se muestra el flujo completo de la aplicación paso a paso, comp
 |:---:|:---:|
 | <img src="./docs/img/img_pantallas/productoD.png" width="450" alt="Detalle Desktop" /> | <img src="./docs/img/img_pantallas/ProductoM.png" width="200" alt="Detalle Mobile" /> |
 
-### 3. Formulario - Datos de Envío (Paso 3)
-| Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
-|:---:|:---:|
-| <img src="./docs/img/img_pantallas/DatosEnvioD.png" width="450" alt="Envío Desktop" /> | <img src="./docs/img/img_pantallas/DatosEnvioM.png" width="200" alt="Envío Mobile" /> |
-
-### 4. Formulario - Datos de Tarjeta (Paso 4)
+### 3. Formulario - Datos de Tarjeta (Paso 3)
 | Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
 |:---:|:---:|
 | <img src="./docs/img/img_pantallas/DatosTarjetaD.png" width="450" alt="Tarjeta Desktop" /> | <img src="./docs/img/img_pantallas/datosTarjetaM.png" width="200" alt="Tarjeta Mobile" /> |
+
+### 4. Formulario - Datos de Envío (Paso 4)
+| Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
+|:---:|:---:|
+| <img src="./docs/img/img_pantallas/DatosEnvioD.png" width="450" alt="Envío Desktop" /> | <img src="./docs/img/img_pantallas/DatosEnvioM.png" width="200" alt="Envío Mobile" /> |
 
 ### 5. Procesando Transacción (Paso 5)
 | Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
