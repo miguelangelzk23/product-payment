@@ -44,6 +44,7 @@ export const useCheckoutStore = defineStore('checkout', {
   state: () => ({
     step: 1, // 1: Product, 2: Delivery & Card, 3: Summary, 4: Status
     loading: false,
+    isCheckoutModalOpen: false,
     error: '' as string | null,
     products: [] as Product[],
     selectedProduct: null as Product | null,
@@ -104,8 +105,11 @@ export const useCheckoutStore = defineStore('checkout', {
       try {
         const response = await api.get('/products');
         this.products = response.data;
-        if (this.products.length > 0) {
-          this.selectedProduct = this.products[0] || null;
+        if (this.selectedProduct) {
+          const updated = this.products.find(p => p.id === this.selectedProduct?.id);
+          if (updated) {
+            this.selectedProduct = updated;
+          }
         }
       } catch (err: any) {
         this.error = 'No se pudo cargar el producto desde el backend.';
@@ -138,6 +142,14 @@ export const useCheckoutStore = defineStore('checkout', {
           expYear: this.cardInfo.expYear,
           cardHolder: this.cardInfo.cardHolder,
           installments: Number(this.cardInfo.installments),
+          productId: this.selectedProduct.id,
+          customerFullName: this.deliveryInfo.fullName,
+          customerPhoneNumber: this.deliveryInfo.phoneNumber,
+          customerDocumentType: this.deliveryInfo.documentType,
+          customerDocumentNumber: this.deliveryInfo.documentNumber,
+          deliveryAddressLine: this.deliveryInfo.addressLine,
+          deliveryCity: this.deliveryInfo.city,
+          deliveryRegion: this.deliveryInfo.region,
         };
 
         const response = await api.post('/wompi/pay', payload);
@@ -176,10 +188,12 @@ export const useCheckoutStore = defineStore('checkout', {
 
     async resetCheckout() {
       this.step = 1;
+      this.isCheckoutModalOpen = false;
       this.transactionResult = null;
       this.cardInfo.cardNumber = '';
       this.cardInfo.cvc = '';
       this.cardInfo.cardHolder = '';
+      this.selectedProduct = null;
       await this.fetchProducts(); // Refresh stock for step 5 -> 1 return
     },
   },

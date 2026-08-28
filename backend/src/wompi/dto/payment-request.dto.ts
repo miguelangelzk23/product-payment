@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, IsEmail, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsEmail, IsOptional, IsEnum } from 'class-validator';
 
 export class PaymentRequestDto {
   @IsNotEmpty()
@@ -40,4 +40,36 @@ export class PaymentRequestDto {
   @IsNotEmpty()
   @IsNumber()
   installments: number;
+
+  @IsNotEmpty()
+  @IsString()
+  productId: string;
+
+  @IsNotEmpty()
+  @IsString()
+  customerFullName: string;
+
+  @IsNotEmpty()
+  @IsString()
+  customerPhoneNumber: string;
+
+  @IsNotEmpty()
+  @IsEnum(['CC', 'CE', 'NIT', 'PP'])
+  customerDocumentType: 'CC' | 'CE' | 'NIT' | 'PP';
+
+  @IsNotEmpty()
+  @IsString()
+  customerDocumentNumber: string;
+
+  @IsNotEmpty()
+  @IsString()
+  deliveryAddressLine: string;
+
+  @IsNotEmpty()
+  @IsString()
+  deliveryCity: string;
+
+  @IsNotEmpty()
+  @IsString()
+  deliveryRegion: string;
 }
