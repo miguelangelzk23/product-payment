@@ -78,27 +78,37 @@ Ambos proyectos cuentan con suites de pruebas unitarias robustas que superan amp
 
 ## 📸 Capturas de Pantalla (Diseño Responsive)
 
-A continuación se muestra el flujo de la aplicación de checkout, evidenciando su adaptabilidad responsive desde pantallas móviles hasta pantallas de escritorio.
+A continuación se muestra el flujo completo de la aplicación paso a paso, comparando la vista de escritorio y la vista móvil para comprobar su adaptabilidad responsive:
 
-### 1. Catálogo / Inicio y Datos de Envío
+### 1. Catálogo / Inicio (Paso 1)
 | Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
 |:---:|:---:|
-| <img src="./docs/img/img_pantallas/InicioD.png" width="450" alt="Inicio Desktop" /> | <img src="./docs/img/img_pantallas/DatosEnvioM.png" width="200" alt="Envío Mobile" /> |
+| <img src="./docs/img/img_pantallas/InicioD.png" width="450" alt="Catálogo Desktop" /> | <img src="./docs/img/img_pantallas/InicioM.png" width="200" alt="Catálogo Mobile" /> |
 
-### 2. Ficha de Detalle de Producto
+### 2. Detalle del Producto (Paso 2)
 | Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
 |:---:|:---:|
-| <img src="./docs/img/img_pantallas/productoD.png" width="450" alt="Producto Desktop" /> | <img src="./docs/img/img_pantallas/datosTarjetaM.png" width="200" alt="Tarjeta Mobile" /> |
+| <img src="./docs/img/img_pantallas/productoD.png" width="450" alt="Detalle Desktop" /> | <img src="./docs/img/img_pantallas/ProductoM.png" width="200" alt="Detalle Mobile" /> |
 
-### 3. Formulario de Tarjeta y Procesando Pago
+### 3. Formulario - Datos de Tarjeta (Paso 3)
 | Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
 |:---:|:---:|
-| <img src="./docs/img/img_pantallas/DatosTarjetaD.png" width="450" alt="Tarjeta Desktop" /> | <img src="./docs/img/img_pantallas/procesandoM.png" width="200" alt="Procesando Mobile" /> |
+| <img src="./docs/img/img_pantallas/DatosTarjetaD.png" width="450" alt="Tarjeta Desktop" /> | <img src="./docs/img/img_pantallas/datosTarjetaM.png" width="200" alt="Tarjeta Mobile" /> |
 
-### 4. Transacción Exitosa / Confirmación
+### 4. Formulario - Datos de Envío (Paso 4)
 | Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
 |:---:|:---:|
-| <img src="./docs/img/img_pantallas/TransaccionAprobadaD.png" width="450" alt="Aprobado Desktop" /> | <img src="./docs/img/img_pantallas/TransaccionAprobadaM.png" width="200" alt="Aprobado Mobile" /> |
+| <img src="./docs/img/img_pantallas/DatosEnvioD.png" width="450" alt="Envío Desktop" /> | <img src="./docs/img/img_pantallas/DatosEnvioM.png" width="200" alt="Envío Mobile" /> |
+
+### 5. Procesando Transacción (Paso 5)
+| Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
+|:---:|:---:|
+| <img src="./docs/img/img_pantallas/ProcesandoD.png" width="450" alt="Procesando Desktop" /> | <img src="./docs/img/img_pantallas/procesandoM.png" width="200" alt="Procesando Mobile" /> |
+
+### 6. Transacción Aprobada (Paso 6)
+| Vista de Escritorio (Desktop) | Vista Móvil (Responsive) |
+|:---:|:---:|
+| <img src="./docs/img/img_pantallas/TransaccionAprobadaD.png" width="450" alt="Aprobada Desktop" /> | <img src="./docs/img/img_pantallas/TransaccionAprobadaM.png" width="200" alt="Aprobada Mobile" /> |
 
 ---
 
